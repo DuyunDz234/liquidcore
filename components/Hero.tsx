@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Download, Disc, Zap } from 'lucide-react';
+import { ChevronDown, Disc, Zap, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const MotionDiv = motion.div as any;
@@ -8,123 +8,105 @@ const MotionSpan = motion.span as any;
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-[#020617]">
-      {/* Coder Background Effects */}
-      <div className="absolute inset-0 opacity-10 font-mono text-[10px] leading-3 text-emerald-500 overflow-hidden pointer-events-none whitespace-nowrap select-none z-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: '100vh', opacity: [0, 1, 0] }}
-            transition={{ 
-              duration: Math.random() * 10 + 10, 
-              repeat: Infinity, 
-              delay: Math.random() * 5,
-              ease: "linear"
-            }}
-            className="absolute top-0"
-            style={{ left: `${Math.random() * 100}%` }}
-          >
-            {Array(50).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join('\n')}
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 z-0 pointer-events-none"></div>
+      {/* Modern Mesh Gradient Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(6,182,212,0.15),rgba(2,6,23,0)_50%)] z-0 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] z-0 pointer-events-none"></div>
       
-      {/* Animated Glow Orbs */}
+      {/* Floating Elements */}
       <motion.div 
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3] 
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full z-0 pointer-events-none"
-      />
-      
-      <motion.div 
-        animate={{ 
-          x: [-20, 20, -20],
           y: [-20, 20, -20],
+          rotate: [0, 5, -5, 0],
+          opacity: [0.3, 0.6, 0.3]
         }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "linear" 
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 blur-[100px] rounded-full z-0 pointer-events-none"
+      />
+      <motion.div 
+        animate={{ 
+          y: [30, -30, 30],
+          rotate: [0, -5, 5, 0],
+          opacity: [0.2, 0.5, 0.2]
         }}
-        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/10 blur-[100px] rounded-full z-0 pointer-events-none"
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full z-0 pointer-events-none"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         <MotionDiv
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          {/* Badge */}
           <motion.div 
-            className="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-cyan-950/30 border border-cyan-500/30 text-cyan-400 text-sm font-mono mb-8 backdrop-blur-md"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-3 py-1.5 px-5 rounded-full bg-slate-900/50 border border-slate-700/50 text-slate-300 text-sm font-mono mb-10 backdrop-blur-md group cursor-default"
+            whileHover={{ scale: 1.02, borderColor: "rgba(34, 211, 238, 0.4)" }}
           >
-            <Zap className="w-4 h-4" />
-            <span className="animate-pulse">System Ready: v2.0.4 [STABLE]</span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span className="group-hover:text-cyan-400 transition-colors">Core System v2.0.4 Online</span>
           </motion.div>
           
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-200 to-slate-500">
+          {/* Main Title */}
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-none select-none">
+            <span className="inline-block text-white drop-shadow-2xl">
               Liquid
             </span>
+            <br className="md:hidden" />
             <MotionSpan 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 relative inline-block"
-              animate={{ textShadow: ["0 0 20px rgba(34,211,238,0.5)", "0 0 10px rgba(34,211,238,0.2)", "0 0 20px rgba(34,211,238,0.5)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 ml-0 md:ml-4 relative"
+              animate={{ 
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              style={{ backgroundSize: "200% auto" }}
             >
               Core
+              <motion.span
+                 className="absolute inset-0 bg-cyan-400/20 blur-xl"
+                 animate={{ opacity: [0, 0.5, 0] }}
+                 transition={{ duration: 2, repeat: Infinity }}
+              />
             </MotionSpan>
           </h1>
           
-          <p className="text-lg md:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
-            Trải nghiệm Minecraft Client <span className="text-white font-semibold">Private</span> tốt nhất.
+          {/* Description */}
+          <p className="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+            The Next-Generation <span className="text-white font-semibold">Private Client Framework</span>.
             <br className="hidden md:block" />
-            Tối ưu hóa FPS cực đại. Bảo mật tuyệt đối. Giao diện đẳng cấp.
+            Engineered for <span className="text-cyan-400 font-mono">max_fps</span> and ultimate security.
           </p>
         </MotionDiv>
 
+        {/* Buttons */}
         <MotionDiv 
-          className="flex flex-wrap justify-center gap-6"
+          className="flex flex-col md:flex-row justify-center items-center gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(6,182,212,0.4)" }}
+            whileHover={{ scale: 1.05, backgroundColor: "#5865F2", borderColor: "#5865F2", color: "white" }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl flex items-center gap-3 overflow-hidden"
+            className="group w-64 py-4 bg-[#5865F2]/10 border border-[#5865F2]/50 text-[#5865F2] font-bold rounded-xl flex items-center justify-center gap-3 transition-all duration-300 backdrop-blur-sm shadow-[0_0_20px_rgba(88,101,242,0.1)] hover:shadow-[0_0_30px_rgba(88,101,242,0.4)]"
           >
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 blur-md"></div>
-            <Download className="w-6 h-6" />
-            <span className="text-lg">Tải Ngay v2.0</span>
-          </motion.button>
-          
-          <motion.button 
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(88, 101, 242, 0.2)", borderColor: "#5865F2" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-slate-900/50 backdrop-blur-sm border border-slate-700 text-slate-200 font-semibold rounded-xl flex items-center gap-3 transition-all"
-          >
-            <Disc className="w-6 h-6 text-[#5865F2]" />
-            <span className="text-lg">Join Discord</span>
+            <Disc className="w-6 h-6" />
+            <span className="text-lg tracking-wide">Join Discord</span>
           </motion.button>
         </MotionDiv>
       </div>
 
+      {/* Scroll Indicator */}
       <MotionDiv 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-600"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600"
+        animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ChevronDown className="w-10 h-10" />
+        <span className="text-xs font-mono tracking-[0.2em] uppercase">Scroll</span>
+        <ChevronDown className="w-5 h-5 animate-bounce" />
       </MotionDiv>
     </section>
   );

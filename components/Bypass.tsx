@@ -1,160 +1,105 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
-import { BYPASS_DATA, TERMINAL_LOGS } from '../constants';
-import { Terminal, Circle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { BYPASS_DATA } from '../constants';
+import { ShieldCheck, AlertTriangle, CheckCircle } from 'lucide-react';
 
 const MotionDiv = motion.div as any;
 
 export const Bypass: React.FC = () => {
-  
-  const terminalVariants: Variants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.6,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const logLineVariants: Variants = {
-    hidden: { opacity: 0, x: -20, height: 0 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      height: 'auto',
-      transition: { 
-        type: "spring", 
-        stiffness: 120, 
-        damping: 12 
-      } 
-    }
-  };
-
   return (
-    <section className="py-24 px-4 bg-slate-950 border-t border-slate-900/50 overflow-hidden relative">
-      {/* Background binary rain effect localized */}
-       <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden font-mono text-[10px]">
-       </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          
-          {/* Left Side: Coder Terminal */}
-          <div className="w-full lg:w-5/12 sticky top-24">
-            <MotionDiv 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-8"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Khả năng <br />
-                <span className="text-emerald-400">Bypass Mạnh Mẽ</span>
-              </h2>
-              <p className="text-slate-400 leading-relaxed">
-                Hệ thống Disabler thông minh tự động nhận diện và vô hiệu hóa các checks của Anti-Cheat mới nhất.
-              </p>
-            </MotionDiv>
-
-            {/* Terminal Window */}
-            <MotionDiv 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-lg overflow-hidden bg-[#0c0c0c] border border-slate-800 shadow-2xl font-mono text-xs md:text-sm ring-1 ring-emerald-500/20"
-            >
-              {/* Terminal Header */}
-              <div className="bg-slate-900/80 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                  </div>
-                  <div className="ml-3 text-slate-500 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider">
-                    <Terminal className="w-3 h-3" />
-                    <span>root@liquidcore:~</span>
-                  </div>
-                </div>
-                <div className="text-emerald-500/50 text-[10px]">v2.0.4-stable</div>
-              </div>
-
-              {/* Terminal Content */}
-              <motion.div 
-                className="p-4 h-[320px] overflow-y-auto text-emerald-400/90 space-y-1 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent"
-                variants={terminalVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {TERMINAL_LOGS.map((log, i) => (
-                  <motion.div
-                    key={i}
-                    variants={logLineVariants}
-                    className="break-all flex gap-2 font-medium"
-                  >
-                    <span className="text-emerald-600 select-none">➜</span>
-                    <span>{log}</span>
-                  </motion.div>
-                ))}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 1, 0] }} 
-                  transition={{ repeat: Infinity, duration: 0.8 }}
-                  className="w-2 h-4 bg-emerald-500 inline-block align-middle mt-1"
-                />
-              </motion.div>
-            </MotionDiv>
+    <section className="py-32 px-4 bg-[#020617] relative overflow-hidden">
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.1] pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <MotionDiv 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
+        >
+          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-mono text-xs tracking-widest uppercase">
+            Security Clearance: Level 5
           </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            Anti-Cheat <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Capabilities</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Dữ liệu thời gian thực về khả năng bypass của hệ thống trên các nền tảng bảo mật hàng đầu.
+          </p>
+        </MotionDiv>
 
-          {/* Right Side: Stats Grid */}
-          <div className="w-full lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
-            {BYPASS_DATA.map((item, index) => (
-              <MotionDiv
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="p-5 rounded-xl bg-slate-900/20 backdrop-blur-sm border border-slate-800/60 hover:border-emerald-500/30 transition-all group relative overflow-hidden"
-              >
-                 {/* Hover Glow Effect */}
-                 <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                <div className="flex items-center justify-between mb-4 relative z-10">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg bg-slate-950 border border-slate-800/80 ${item.color} bg-opacity-10 group-hover:bg-opacity-20 transition-all`}>
-                       <item.icon className={`w-5 h-5`} />
-                    </div>
-                    <span className="font-bold text-slate-200 text-sm tracking-wide">{item.server}</span>
-                  </div>
-                  <div className={`px-2 py-0.5 rounded text-[10px] font-bold bg-slate-950 border border-slate-800 ${item.color} shadow-sm`}>
-                    {item.status}
-                  </div>
-                </div>
-
-                {/* Progress Bar Container */}
-                <div className="relative w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800/50">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${item.rate}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 + (index * 0.05) }}
-                    className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-emerald-800 to-emerald-400`}
-                  />
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 px-4">
+          {BYPASS_DATA.map((item, index) => (
+            <MotionDiv
+              key={index}
+              initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group relative perspective-1000"
+            >
+              {/* Card Container */}
+              <div className="relative h-[280px] rounded-2xl overflow-hidden bg-slate-900/80 border border-slate-800 transition-all duration-500 group-hover:border-opacity-0">
                 
-                <div className="flex justify-between mt-2.5 font-mono text-[10px] uppercase tracking-wider text-slate-500 relative z-10">
-                  <span>Success Rate</span>
-                  <span className={item.color}>{item.rate}%</span>
+                {/* Holographic Border/Glow on Hover */}
+                <div className={`absolute -inset-[2px] bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 rounded-2xl -z-10`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-0`}></div>
+
+                {/* Scanline Effect */}
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[size:100%_4px] opacity-20 pointer-events-none z-0"></div>
+
+                <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                  {/* Header */}
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg bg-gradient-to-br ${item.color} shadow-lg`}>
+                        <item.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-xl text-white tracking-wide">{item.server}</h3>
+                        <span className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Target ID: {index + 8040}</span>
+                      </div>
+                    </div>
+                    <ShieldCheck className={`w-6 h-6 ${index === 0 ? 'text-red-500' : 'text-emerald-500'} opacity-50`} />
+                  </div>
+
+                  {/* Middle: Stats */}
+                  <div className="space-y-4">
+                     <div className="flex justify-between items-end text-sm">
+                        <span className="text-slate-400 font-mono">BYPASS RATE</span>
+                        <span className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.color}`}>{item.rate}%</span>
+                     </div>
+                     {/* Progress Bar */}
+                     <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.rate}%` }}
+                          transition={{ duration: 1.5, ease: "circOut", delay: 0.5 + (index * 0.1) }}
+                          className={`h-full bg-gradient-to-r ${item.color} shadow-[0_0_10px_currentColor]`}
+                        />
+                     </div>
+                  </div>
+
+                  {/* Footer: Status Stamp */}
+                  <div className="flex items-center justify-between border-t border-slate-800/50 pt-4 mt-2">
+                    <div className="flex items-center gap-2">
+                      <div className={`w-2 h-2 rounded-full ${item.rate >= 95 ? 'bg-green-500 animate-pulse' : 'bg-yellow-500'}`}></div>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${item.rate >= 95 ? 'text-green-400' : 'text-yellow-400'}`}>
+                        {item.status}
+                      </span>
+                    </div>
+                    {item.rate >= 98 && (
+                      <div className="border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 rounded text-[10px] text-emerald-400 font-mono uppercase">
+                        Verified
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </MotionDiv>
-            ))}
-          </div>
+              </div>
+            </MotionDiv>
+          ))}
         </div>
       </div>
     </section>

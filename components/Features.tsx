@@ -12,12 +12,18 @@ export const Features: React.FC = () => {
        <div className="absolute left-[-100px] top-1/4 w-96 h-96 bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
        <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        <MotionDiv 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-20"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Tính Năng <span className="text-cyan-400">Vượt Trội</span></h2>
           <p className="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
             Bộ công cụ mạnh mẽ được tối ưu hóa riêng cho trải nghiệm <span className="text-white">Premium</span>.
           </p>
-        </div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {KEY_FEATURES.map((item, index) => (

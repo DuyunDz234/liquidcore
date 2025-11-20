@@ -14,14 +14,20 @@ export const Architecture: React.FC = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        <MotionDiv 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-20"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Kiến Trúc <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Hệ Thống</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             Thiết kế Modular 4 tầng riêng biệt giúp LiquidCore đạt hiệu suất tối đa và khả năng mở rộng không giới hạn.
           </p>
-        </div>
+        </MotionDiv>
 
         <div className="flex flex-col gap-8 items-center">
           {ARCHITECTURE_LAYERS.map((layer, index) => {

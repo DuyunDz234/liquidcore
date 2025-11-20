@@ -15,7 +15,7 @@ import {
   Server,
   Eye
 } from 'lucide-react';
-import { FeatureItem, ArchitectureLayer, FAQItem } from './types';
+import { FeatureItem, ArchitectureLayer, FAQItem, StatItem, RoadmapItem, TestimonialItem } from './types';
 
 export const LIQUID_CORE_CONTEXT = `
 LiquidCore là bản nâng cấp độc quyền (Closed Source) phát triển từ nền tảng LiquidBounce, tập trung tối đa vào hiệu năng (High FPS), bảo mật và trải nghiệm người dùng cao cấp.
@@ -118,52 +118,40 @@ export const TECH_STACK = [
 
 export const BYPASS_DATA = [
   {
-    server: "Hypixel (Watchdog)",
+    server: "Hypixel",
     status: "Bypassing",
     rate: 95,
     icon: Eye,
-    color: "text-red-400"
+    color: "from-red-500 to-orange-600"
   },
   {
     server: "GrimAC",
     status: "Stable",
     rate: 90,
     icon: Shield,
-    color: "text-orange-400"
+    color: "from-orange-500 to-yellow-600"
   },
   {
     server: "Vulcan",
     status: "Undetected",
     rate: 98,
     icon: Zap,
-    color: "text-purple-400"
+    color: "from-purple-500 to-pink-600"
   },
   {
     server: "Intave",
     status: "Good",
     rate: 85,
     icon: Server,
-    color: "text-blue-400"
+    color: "from-blue-500 to-cyan-600"
   },
   {
     server: "NCP / Matrix",
     status: "Perfect",
     rate: 100,
     icon: Box,
-    color: "text-green-400"
+    color: "from-emerald-500 to-green-600"
   }
-];
-
-export const TERMINAL_LOGS = [
-  "> [INIT] LiquidCore Kernel v2.0.4 loaded",
-  "> [SECURE] Connection established via encrypted tunnel",
-  "> [CHECK] Scanning Hypixel Watchdog signatures...",
-  "> [BYPASS] Disabler module injected (Method: PacketCancel)",
-  "> [SUCCESS] Watchdog bypass rate: 99.8%",
-  "> [CHECK] Scanning GrimAC patterns...",
-  "> [BYPASS] Velocity checks disabled",
-  "> [INFO] Optimizing packet flow for 0ms ping...",
-  "> [SYSTEM] All anti-cheat systems neutralized."
 ];
 
 export const FAQ_ITEMS: FAQItem[] = [
@@ -186,5 +174,69 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "Máy yếu có chạy được 60FPS không?",
     answer: "Chắc chắn! LiquidCore được sinh ra cho máy yếu. Với 'FPS Boost Engine', bạn sẽ thấy sự khác biệt rõ rệt ngay lần khởi động đầu tiên."
+  }
+];
+
+export const STATS_DATA: StatItem[] = [
+  { label: "Active Users", value: 15000, suffix: "+", prefix: "" },
+  { label: "Average FPS Boost", value: 120, suffix: "%", prefix: "+" },
+  { label: "Custom Modules", value: 200, suffix: "+", prefix: "" },
+  { label: "Uptime Stability", value: 99, suffix: "%", prefix: "" },
+];
+
+export const ROADMAP_DATA: RoadmapItem[] = [
+  {
+    phase: "Phase 1",
+    title: "Core Foundation",
+    date: "Q3 2023 - Completed",
+    status: "completed",
+    items: [
+      "Viết lại Core Rendering Engine",
+      "Hệ thống Module Pipeline mới",
+      "Tối ưu hóa Netty Networking",
+      "Ra mắt bản Closed Beta đầu tiên"
+    ]
+  },
+  {
+    phase: "Phase 2",
+    title: "Cloud Era",
+    date: "Q4 2024 - In Progress",
+    status: "in-progress",
+    items: [
+      "Hệ thống Cloud Configs (Sync settings)",
+      "Marketplace cho Scripts & Addons",
+      "Tích hợp Anti-Leak V2",
+      "Hỗ trợ Voice Chat native"
+    ]
+  },
+  {
+    phase: "Phase 3",
+    title: "AI Integration",
+    date: "Q2 2025 - Upcoming",
+    status: "upcoming",
+    items: [
+      "AI Auto-Config (Tự chỉnh bypass)",
+      "Smart Killaura (Humanized Aim)",
+      "Hệ thống phát hiện Admin in-game",
+      "Mở rộng hỗ trợ Minecraft 1.21+"
+    ]
+  }
+];
+
+export const TESTIMONIALS_DATA: TestimonialItem[] = [
+  {
+    name: "ShadowHunter",
+    role: "Top 10 Skywars",
+    content: "Chuyển từ client khác sang LiquidCore là quyết định sáng suốt nhất. FPS cực kỳ ổn định và các module hỗ trợ combat rất mượt, không bị khựng."
+  },
+  {
+    name: "DevAlex",
+    role: "Plugin Developer",
+    content: "Hệ thống API rất clean và dễ tiếp cận. Tôi đã viết được vài addon riêng để custom giao diện theo ý thích mà không gặp khó khăn gì."
+  },
+  {
+    name: "JustAGamer",
+    role: "Casual Player",
+    content: "Máy mình cấu hình yếu nhưng chạy LiquidCore vẫn mượt mà. Tính năng Cloud Configs cực tiện, ra quán net chỉ cần login là xong."
   }
 ];
