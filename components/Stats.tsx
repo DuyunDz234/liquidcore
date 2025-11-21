@@ -10,7 +10,7 @@ const Counter = ({ value, prefix = '', suffix = '' }: { value: number, prefix?: 
     const isInView = useInView(ref, { once: true, margin: "-20px" });
     
     return (
-        <span ref={ref} className="font-bold text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500">
+        <span ref={ref} className="font-bold text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-b from-cyan-100 to-blue-600">
             {prefix}
             {isInView ? (
                 <CountUp end={value} duration={2} />
@@ -55,7 +55,7 @@ const CountUp = ({ end, duration }: { end: number, duration: number }) => {
 
 export const Stats: React.FC = () => {
   return (
-    <section className="py-16 bg-slate-950 border-b border-slate-900/50">
+    <section className="py-16 bg-slate-950 border-b border-blue-900/30">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {STATS_DATA.map((stat, index) => (

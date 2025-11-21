@@ -1,102 +1,121 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BYPASS_DATA } from '../constants';
-import { ShieldCheck, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 const MotionDiv = motion.div as any;
 
 export const Bypass: React.FC = () => {
   return (
     <section className="py-32 px-4 bg-[#020617] relative overflow-hidden">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.1] pointer-events-none"></div>
       
+      {/* Background Grid giống Hero */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] opacity-[0.4] pointer-events-none"></div>
+
+      {/* Mesh Glow */}
+      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-2/3 right-1/4 w-[700px] h-[700px] bg-purple-600/10 blur-[180px] rounded-full pointer-events-none"></div>
+
       <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* Header */}
         <MotionDiv 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-mono text-xs tracking-widest uppercase">
-            Security Clearance: Level 5
+          <div className="inline-block mb-4 px-5 py-1.5 rounded-full bg-slate-900/40 border border-slate-700/40 text-slate-300 font-mono text-xs tracking-widest backdrop-blur-md">
+            Anti-Cheat Intel Report v2.0
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Anti-Cheat <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Capabilities</span>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+            <span className="text-cyan-400">Khả Năng Bypass</span> Hệ Thống
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Dữ liệu thời gian thực về khả năng bypass của hệ thống trên các nền tảng bảo mật hàng đầu.
+
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg mt-4">
+            Báo cáo phân tích theo thời gian thực về tỉ lệ vượt qua Anti-Cheat tại các server hàng đầu.
           </p>
         </MotionDiv>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 px-4">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
           {BYPASS_DATA.map((item, index) => (
             <MotionDiv
               key={index}
-              initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
-              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative perspective-1000"
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative p-8 rounded-2xl bg-slate-900/30 border border-slate-800/40 backdrop-blur-xl transition-all duration-500 hover:border-cyan-500/30"
             >
-              {/* Card Container */}
-              <div className="relative h-[280px] rounded-2xl overflow-hidden bg-slate-900/80 border border-slate-800 transition-all duration-500 group-hover:border-opacity-0">
-                
-                {/* Holographic Border/Glow on Hover */}
-                <div className={`absolute -inset-[2px] bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 rounded-2xl -z-10`}></div>
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-0`}></div>
+              {/* Hover gradient nhẹ giống Features */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
 
-                {/* Scanline Effect */}
-                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[size:100%_4px] opacity-20 pointer-events-none z-0"></div>
-
-                <div className="relative z-10 p-6 h-full flex flex-col justify-between">
-                  {/* Header */}
-                  <div className="flex justify-between items-start">
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg bg-gradient-to-br ${item.color} shadow-lg`}>
-                        <item.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-xl text-white tracking-wide">{item.server}</h3>
-                        <span className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Target ID: {index + 8040}</span>
-                      </div>
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-700/30 group-hover:border-cyan-400/40 transition-all">
+                      <item.icon className={`w-7 h-7 text-cyan-400`} />
                     </div>
-                    <ShieldCheck className={`w-6 h-6 ${index === 0 ? 'text-red-500' : 'text-emerald-500'} opacity-50`} />
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{item.server}</h3>
+                      <p className="text-xs text-slate-500 font-mono tracking-wider">
+                        Target ID: {index + 8901}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Middle: Stats */}
-                  <div className="space-y-4">
-                     <div className="flex justify-between items-end text-sm">
-                        <span className="text-slate-400 font-mono">BYPASS RATE</span>
-                        <span className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.color}`}>{item.rate}%</span>
-                     </div>
-                     {/* Progress Bar */}
-                     <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${item.rate}%` }}
-                          transition={{ duration: 1.5, ease: "circOut", delay: 0.5 + (index * 0.1) }}
-                          className={`h-full bg-gradient-to-r ${item.color} shadow-[0_0_10px_currentColor]`}
-                        />
-                     </div>
+                  <Shield className="w-6 h-6 text-cyan-400 opacity-40" />
+                </div>
+
+                {/* Bypass Rate */}
+                <div className="mb-6">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-slate-400 text-sm font-mono">BYPASS RATE</span>
+                    <span className="text-2xl font-bold text-cyan-300">{item.rate}%</span>
                   </div>
 
-                  {/* Footer: Status Stamp */}
-                  <div className="flex items-center justify-between border-t border-slate-800/50 pt-4 mt-2">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${item.rate >= 95 ? 'bg-green-500 animate-pulse' : 'bg-yellow-500'}`}></div>
-                      <span className={`text-xs font-bold uppercase tracking-wider ${item.rate >= 95 ? 'text-green-400' : 'text-yellow-400'}`}>
-                        {item.status}
-                      </span>
-                    </div>
-                    {item.rate >= 98 && (
-                      <div className="border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 rounded text-[10px] text-emerald-400 font-mono uppercase">
-                        Verified
-                      </div>
-                    )}
+                  {/* Progress */}
+                  <div className="w-full h-2 bg-slate-800/60 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.rate}%` }}
+                      transition={{ duration: 1.2, ease: "easeOut" }}
+                      className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
+                    />
                   </div>
                 </div>
+
+                {/* Status */}
+                <div className="flex items-center justify-between border-t border-slate-700/40 pt-4">
+                  <div className="flex items-center gap-2">
+                    <span 
+                      className={`w-2 h-2 rounded-full ${
+                        item.rate >= 95 ? "bg-green-400" : "bg-yellow-400"
+                      }`}
+                    ></span>
+
+                    <span 
+                      className={`text-xs uppercase font-bold tracking-wide ${
+                        item.rate >= 95 ? "text-green-300" : "text-yellow-300"
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </div>
+
+                  {item.rate >= 98 && (
+                    <span className="px-2 py-0.5 text-[10px] rounded bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono uppercase">
+                      Verified
+                    </span>
+                  )}
+                </div>
+
               </div>
             </MotionDiv>
           ))}

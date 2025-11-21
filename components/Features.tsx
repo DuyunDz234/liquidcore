@@ -36,10 +36,10 @@ export const Features: React.FC = () => {
               className="relative group p-8 rounded-2xl bg-slate-900/20 border border-slate-800/50 backdrop-blur-xl hover:border-cyan-500/30 transition-all duration-500"
             >
               {/* Hover Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-slate-800/50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/10 transition-all duration-500 border border-slate-700/50 group-hover:border-cyan-500/30 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-slate-800/50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-500 border border-slate-700/50 group-hover:border-cyan-500/50 shadow-lg">
                   {item.icon && <item.icon className="w-8 h-8 text-slate-400 group-hover:text-cyan-400 transition-colors duration-500" />}
                 </div>
                 
