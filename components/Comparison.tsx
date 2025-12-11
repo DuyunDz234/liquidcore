@@ -1,5 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Check, X, ShieldCheck } from 'lucide-react';
+
+const MotionDiv = motion.div as any;
+const MotionTr = motion.tr as any;
 
 export const Comparison: React.FC = () => {
   const features = [
@@ -13,12 +17,25 @@ export const Comparison: React.FC = () => {
   return (
     <section className="py-24 px-4 bg-slate-950 border-y border-slate-900/50">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-white text-center mb-4">
-          Tại Sao Chọn <span className="text-cyan-400">LiquidCore</span>?
-        </h2>
-        <p className="text-center text-slate-400 mb-16">So sánh sự khác biệt giữa bản gốc và phiên bản nâng cấp</p>
+        <MotionDiv
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold text-white text-center mb-4">
+            Tại Sao Chọn <span className="text-cyan-400">LiquidCore</span>?
+          </h2>
+          <p className="text-center text-slate-400 mb-16">So sánh sự khác biệt giữa bản gốc và phiên bản nâng cấp</p>
+        </MotionDiv>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30 backdrop-blur-md shadow-2xl">
+        <MotionDiv
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30 backdrop-blur-md shadow-2xl"
+        >
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-800 bg-slate-900/80">
@@ -32,7 +49,14 @@ export const Comparison: React.FC = () => {
             </thead>
             <tbody>
               {features.map((feat, idx) => (
-                <tr key={idx} className="border-b border-slate-800/50 hover:bg-white/5 transition-colors group">
+                <MotionTr
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className="border-b border-slate-800/50 hover:bg-white/5 transition-colors group"
+                >
                   <td className="p-6 text-slate-200 font-medium group-hover:text-white transition-colors">
                     {feat.name}
                     {feat.name.includes("Bảo mật") && <ShieldCheck className="inline ml-2 w-4 h-4 text-emerald-500" />}
@@ -47,11 +71,11 @@ export const Comparison: React.FC = () => {
                       {feat.lb === false ? <X className="w-6 h-6 text-slate-600" /> : feat.lb}
                     </div>
                   </td>
-                </tr>
+                </MotionTr>
               ))}
             </tbody>
           </table>
-        </div>
+        </MotionDiv>
       </div>
     </section>
   );
